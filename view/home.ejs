@@ -1,0 +1,52 @@
+<div>
+    <h1>Welcome to home page</h1>
+
+    <h3>List of files </h3>
+
+    <ul>
+        <% for(f of data) {%>
+
+            <l1>
+                <a href="/file/showfile?id=<%=f.id%>"><p><%=f.filename%></p></a>
+            </l1>
+            <%}%>
+    </ul>
+
+
+
+    <h4>
+        file upload section
+    </h4>
+
+    <form action='/file/create' method="POST" enctype="multipart/form-data">
+        <input type="file" name='csvfile' onchange="ValidateSingleInput(this);" >
+        <input type="submit" value='upload'>
+    </form>
+</div>
+
+<script>
+
+var _validFileExtensions = ['.csv'];    
+function ValidateSingleInput(oInput) {
+    if (oInput.type == "file") {
+        var sFileName = oInput.value;
+         if (sFileName.length > 0) {
+            var blnValid = false;
+            for (var j = 0; j < _validFileExtensions.length; j++) {
+                var sCurExtension = _validFileExtensions[j];
+                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                    blnValid = true;
+                    break;
+                }
+            }
+             
+            if (!blnValid) {
+                alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                oInput.value = "";
+                return false;
+            }
+        }
+    }
+    return true;
+}
+</script>

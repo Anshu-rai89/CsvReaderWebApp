@@ -1,0 +1,26 @@
+<div>
+<table>
+
+        <tr>
+                <% for (h of headers) {%>
+                    
+                   <th><%=h%> </th>
+                    <%}%>
+               </tr>
+        
+   
+               <% for (f of data) {%>
+                <tr>
+                 
+                    
+                    <td><%=f.id%> </td>
+                    <td><%=f.name%> </td>
+                    <td><%=f.manufacture_year%> </td>
+                    <td><%=f.make%> </td>
+                    <td><%=f.price%></td>
+                 </tr>
+                <%}%>
+           
+
+</table>
+</div>

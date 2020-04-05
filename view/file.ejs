@@ -1,0 +1,31 @@
+<div>
+  <h1><%=title%></h1>
+    <form action='/file/search?id=<%=title%> ' method='POST'style="margin:40px">
+        <input type='text' style="height: 20px ;width:170px" placeholder="search by name" name='name'>
+        <input type='submit'  style="padding: 2px" value='search'  >
+    </form>
+    <table style="width:100%">
+       <tr>
+        <% for (h of headers) {%>
+            
+           <th><%=h%> </th>
+            <%}%>
+       </tr>
+
+  
+     
+        <% for (f of data) {%>
+                 
+            
+           <tr>
+            
+              <td><%=f.id%> </td>
+                    <td><%=f.name%> </td>
+                    <td><%=f.manufacture_year%> </td>
+                    <td><%=f.make%> </td>
+                    <td><%=f.price%></td>
+            </tr>
+            <%}%>
+        
+    </table>
+</div>
