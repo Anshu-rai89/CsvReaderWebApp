@@ -41,7 +41,7 @@ function ValidateSingleInput(oInput) {
             }
              
             if (!blnValid) {
-                alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(" "));
                 oInput.value = "";
                 return false;
             }
