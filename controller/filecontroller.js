@@ -88,11 +88,12 @@ module.exports.showfile=async function(req,res)
 
 
 module.exports.search=async function(req,res)
-{
-    console.log(req.query.id);
-       
+{  try{
+   
+       // fetching file bi id 
     let csvfile=await CSVFILE.findById(req.query.id);
-
+ 
+    // parsing file
     let filename=__dirname+'/..'+csvfile.filepath;
            console.log('file is present at ',filename);
           await  fs.createReadStream(`${filename}`)
@@ -103,13 +104,25 @@ module.exports.search=async function(req,res)
    
             });
 
-           // const regex = new RegExp(escapeRegex(req.body.name), 'gi');
-           
+           //const regex = new RegExp(escapeRegex(req.body.name), 'gi');
+           console.log("deatils are ",results[0]);
             var propNames = Object.keys(results[0]);
             let res1=[]
+            let column=req.body.col;
+            let val=req.body.name;
             if(req.body.name){
-            const index=results.findIndex(x=>x.name===req.body.name);
-                res1.push(results[index]);
+            // const index=results.findIndex(x=>x[column]===val);
+            //     res1.push(results[index]);
+
+            for (data of results)
+            {
+                for(c of propNames)
+                {
+                    if(data[column]==val)  res1.push(data);
+                }
+            }
+
+           
             }
             else{
                 for (r of results)
@@ -124,6 +137,12 @@ module.exports.search=async function(req,res)
         data:res1,
         headers:propNames
     });
+
+}catch(err)
+{
+    console.log("error in search",err);
+    return res.redirect('back');
+}
 }
 
 

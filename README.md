@@ -9,7 +9,7 @@ Here is the list of feature
 
 2 You can upload only csv file 
 
-3 You can see content of any csv file uploaded by clicling on its file name
+3 You can see content of any csv file uploaded by clicking on its file name
 
 
 4 You can search for any data based on one of field 

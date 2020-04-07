@@ -11,13 +11,10 @@
    
                <% for (f of data) {%>
                 <tr>
-                 
+                 <% for (h of headers) {%>
                     
-                    <td><%=f.id%> </td>
-                    <td><%=f.name%> </td>
-                    <td><%=f.manufacture_year%> </td>
-                    <td><%=f.make%> </td>
-                    <td><%=f.price%></td>
+                    <td><%=f[h]%> </td>
+                    <%}%>
                  </tr>
                 <%}%>
            

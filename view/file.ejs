@@ -1,9 +1,13 @@
+
 <div>
   <h1><%=title%></h1>
     <form action='/file/search?id=<%=title%> ' method='POST'style="margin:40px">
-        <input type='text' style="height: 20px ;width:170px" placeholder="search by name" name='name'>
+      <input type="text"  style="height: 20px; width:120px " name='col'placeholder="col value ">
+        <input type='text' style="height: 20px ;width:170px" placeholder="value to search" name='name'>
         <input type='submit'  style="padding: 2px" value='search'  >
     </form>
+
+ 
     <table style="width:100%">
        <tr>
         <% for (h of headers) {%>
@@ -25,4 +29,6 @@
             <%}%>
         
     </table>
+
+    
 </div>
